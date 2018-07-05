@@ -28,8 +28,8 @@ sudo free
 sudo echo "/var/swap.img none swap sw 0 0" >> /etc/fstab
 cd
 
-// wget https://github.com/zabtc/Northern/releases/download/1.0.0/northern-1.0.0-x86_64-linux-gnu.tar.gz
-// tar -xzf northern-1.0.0-x86_64-linux-gnu.tar.gz
+// wget https://github.com/kydcoin/KYD/releases/download/1.0.0/kyd-v1.0.0-linux-gnu.tar.gz
+// tar -xzf kyd-v1.0.0-linux-gnu.tar.gz
 
 sudo apt-get install -y ufw
 sudo ufw allow ssh/tcp
