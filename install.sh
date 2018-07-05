@@ -55,7 +55,7 @@ case $key in
     -h|--help)
     cat << EOL
 
-NORT Masternode installer arguments:
+KYD Masternode installer arguments:
 
     -n --normal               : Run installer in normal mode
     -a --advanced             : Run installer in advanced mode
@@ -83,8 +83,8 @@ set -- "${POSITIONAL[@]}" # restore positional parameters
 clear
 
 # Set these to change the version of northern to install
-TARBALLURL="https://github.com/zabtc/Northern/releases/download/1.0.0/northern-1.0.0-x86_64-linux-gnu.tar.gz"
-TARBALLNAME="northern-1.0.0-x86_64-linux-gnu.tar.gz"
+TARBALLURL="https://github.com/kydcoin/KYD/releases/download/1.0.0/kyd-v1.0.0-linux-gnu.tar.gz"
+TARBALLNAME="kyd-v1.0.0-linux-gnu.tar.gz"
 BOOTSTRAPURL=""
 BOOTSTRAPARCHIVE=""
 BWKVERSION="1.0.0"
@@ -228,7 +228,7 @@ if [[ ("$UFW" == "y" || "$UFW" == "Y" || "$UFW" == "") ]]; then
   ufw default deny incoming
   ufw default allow outgoing
   ufw allow ssh
-  ufw allow 6942/tcp
+  ufw allow 3434/tcp
   yes | ufw enable
 fi
 
@@ -236,13 +236,13 @@ fi
 wget $TARBALLURL
 tar -xzvf $TARBALLNAME 
 rm $TARBALLNAME
-mv ./northernd /usr/local/bin
-mv ./northern-cli /usr/local/bin
-mv ./northern-tx /usr/local/bin
+mv ./kydd /usr/local/bin
+mv ./kyd-cli /usr/local/bin
+mv ./kyd-tx /usr/local/bin
 rm -rf $TARBALLNAME
 
 # Create .northern directory
-mkdir $USERHOME/.northern
+mkdir $USERHOME/.kyd
 
 # Install bootstrap file
 if [[ ("$BOOTSTRAP" == "y" || "$BOOTSTRAP" == "Y" || "$BOOTSTRAP" == "") ]]; then
@@ -250,8 +250,8 @@ if [[ ("$BOOTSTRAP" == "y" || "$BOOTSTRAP" == "Y" || "$BOOTSTRAP" == "") ]]; the
 fi
 
 # Create northern.conf
-touch $USERHOME/.northern/northern.conf
-cat > $USERHOME/.northern/northern.conf << EOL
+touch $USERHOME/.kyd/kyd.conf
+cat > $USERHOME/.kyd/kyd.conf << EOL
 ${INSTALLERUSED}
 rpcuser=${RPCUSER}
 rpcpassword=${RPCPASSWORD}
@@ -262,44 +262,34 @@ daemon=1
 logtimestamps=1
 maxconnections=256
 externalip=${IP}
-bind=${IP}:6942
+bind=${IP}:3434
 masternodeaddr=${IP}
 masternodeprivkey=${KEY}
 masternode=1
-addnode=207.246.69.246
-addnode=209.250.233.104
-addnode=45.77.82.101
-addnode=138.68.167.127
-addnode=45.77.218.53
-addnode=207.246.86.118
-addnode=128.199.44.28
-addnode=139.59.164.167
-addnode=139.59.177.56
-addnode=206.189.58.89
-addnode=207.154.202.113
-addnode=140.82.54.227
+addnode=199.247.24.117
+addnode=95.179.129.78
 EOL
-chmod 0600 $USERHOME/.northern/northern.conf
-chown -R $USER:$USER $USERHOME/.northern
+chmod 0600 $USERHOME/.kyd/kyd.conf
+chown -R $USER:$USER $USERHOME/.kyd
 
 sleep 1
 
 cat > /etc/systemd/system/northern.service << EOL
 [Unit]
-Description=northernd
+Description=kydd
 After=network.target
 [Service]
 Type=forking
 User=${USER}
 WorkingDirectory=${USERHOME}
-ExecStart=/usr/local/bin/northernd -conf=${USERHOME}/.northern/northern.conf -datadir=${USERHOME}/.northern
-ExecStop=/usr/local/bin/northern-cli -conf=${USERHOME}/.northern/northern.conf -datadir=${USERHOME}/.northern stop
+ExecStart=/usr/local/bin/kydd -conf=${USERHOME}/.kyd/kyd.conf -datadir=${USERHOME}/.kyd
+ExecStop=/usr/local/bin/kyd-cli -conf=${USERHOME}/.kyd/kyd.conf -datadir=${USERHOME}/.kyd stop
 Restart=on-abort
 [Install]
 WantedBy=multi-user.target
 EOL
-sudo systemctl enable northern.service
-sudo systemctl start northern.service
+sudo systemctl enable kyd.service
+sudo systemctl start kyd.service
 
 clear
 
