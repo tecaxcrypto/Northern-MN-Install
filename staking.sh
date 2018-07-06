@@ -50,8 +50,8 @@ echo "server=1" >> kyd.conf
 echo "daemon=1" >> kyd.conf
 echo "logtimestamps=1" >> kyd.conf
 echo "maxconnections=256" >> kyd.conf
-echo "addnode=199.247.24.117" >> kyd.conf
-echo "addnode=95.179.129.78" >> kyd.conf
+echo "addnode=95.179.157.139" >> kyd.conf
+echo "addnode=95.179.157.128" >> kyd.conf
 echo "port=3434" >> kyd.conf
 mv kyd.conf .kyd
 
