@@ -1,4 +1,4 @@
-# Northern-Masternode-Guide
+# KYDCOIN-Masternode-Guide
 
 ## System requirements - USE AN UBUNTU LINUX 16.04 VPS for best results
 
@@ -40,22 +40,22 @@ masternode outputs
 
 Copy both the key and output information to a text file.
 
-Close your wallet and open the Northern Appdata folder. Its location depends on your OS.
+Close your wallet and open the kyd Appdata folder. Its location depends on your OS.
 
-* **Windows:** Press Windows+R and write %appdata% - there, open the folder Northern.  
-* **macOS:** Press Command+Space to open Spotlight, write ~/Library/Application Support/Northern and press Enter.  
-* **Linux:** Open ~/.Northern/
+* **Windows:** Press Windows+R and write %appdata% - there, open the folder kyd.  
+* **macOS:** Press Command+Space to open Spotlight, write ~/Library/Application Support/kyd and press Enter.  
+* **Linux:** Open ~/.kyd/
 
 In your appdata folder, open masternode.conf with a text editor and add a new line in this format to the bottom of the file:
 
 ```bash
-masternodename ipaddress:6942 genkey collateralTxID outputID
+masternodename ipaddress:3434 genkey collateralTxID outputID
 ```
 
 An example would be
 
 ```
-mn1 127.0.0.2:6942 93HaYBVUCYjEMeeH1Y4sBGLALQZE1Yc1K64xiqgX37tGBDQL8Xg 2bcd3c84c84f87eaa86e4e56834c92927a07f9e18718810b92e0d0324456a67c 0
+mn1 127.0.0.2:3434 93HaYBVUCYjEMeeH1Y4sBGLALQZE1Yc1K64xiqgX37tGBDQL8Xg 2bcd3c84c84f87eaa86e4e56834c92927a07f9e18718810b92e0d0324456a67c 0
 ```
 
 _masternodename_ is a name you choose, _ipaddress_ is the public IP of your VPS, masternodeprivatekey is the output from `masternode genkey`, and _collateralTxID_ & _outputID_ come from `masternode outputs`. Please note that _masternodename_ must not contain any spaces, and should not contain any special characters.
@@ -72,7 +72,7 @@ When the script asks, confirm your VPS IP Address and paste your masternode key 
 
 The installer will then present you with a few options.
 
-**PLEASE NOTE**: Do not choose the advanced installation option unless you have experience with Linux and know what you are doing - if you do and something goes wrong, the Northern team CANNOT help you, and you will have to restart the installation.
+**PLEASE NOTE**: Do not choose the advanced installation option unless you have experience with Linux and know what you are doing - if you do and something goes wrong, the KYD team CANNOT help you, and you will have to restart the installation.
 
 Follow the instructions on screen.
 
@@ -85,10 +85,10 @@ This can take up to a few hours. Do not close this window.
 
 Once you see "Masternode setup completed." on screen, you are done.
 
-### To check your masternode status on your VPS, navigate to /usr/local/bin and then run 
+### To check your masternode status on your VPS, navigate to /usr/local/bin and then run
 
 ```bash
-./northern-cli masternode status
+./kyd-cli masternode status
 ```
 
 
@@ -96,7 +96,7 @@ Once you see "Masternode setup completed." on screen, you are done.
 ### https://discord.gg/9nzt37V
 
 
-## For Windows setups, use this config in your masternode.conf or northern.conf (depending on if you are using a VPS or local wallet)
+## For Windows setups, use this config in your masternode.conf or kyd.conf (depending on if you are using a VPS or local wallet)
 
 ```bash
 rpcuser=<RANDOMUSERNAME>

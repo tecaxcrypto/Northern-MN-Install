@@ -82,7 +82,7 @@ set -- "${POSITIONAL[@]}" # restore positional parameters
 
 clear
 
-# Set these to change the version of northern to install
+# Set these to change the version of KYDCOIN to install
 TARBALLURL="https://github.com/kydcoin/KYD/releases/download/1.0.0/kyd-v1.0.0-linux-gnu.tar.gz"
 TARBALLNAME="kyd-v1.0.0-linux-gnu.tar.gz"
 BOOTSTRAPURL=""
@@ -143,7 +143,7 @@ echo "
  |               installation method.               |::
  |                                                  |::
  |  Otherwise, your masternode will not work, and   |::
- | the NORT Team CANNOT assist you in repairing  |::
+ | the KYD Team CANNOT assist you in repairing  |::
  |         it. You will have to start over.         |::
  |                                                  |::
  +------------------------------------------------+::
@@ -160,13 +160,13 @@ fi
 
 if [[ ("$ADVANCED" == "y" || "$ADVANCED" == "Y") ]]; then
 
-USER=northern
+USER=kyd
 
 adduser $USER --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password > /dev/null
 
 INSTALLERUSED="#Used Advanced Install"
 
-echo "" && echo 'Added user "northern"' && echo ""
+echo "" && echo 'Added user "kyd"' && echo ""
 sleep 1
 
 else
@@ -234,14 +234,14 @@ fi
 
 # Install NORT daemon
 wget $TARBALLURL
-tar -xzvf $TARBALLNAME 
+tar -xzvf $TARBALLNAME
 rm $TARBALLNAME
 mv ./kydd /usr/local/bin
 mv ./kyd-cli /usr/local/bin
 mv ./kyd-tx /usr/local/bin
 rm -rf $TARBALLNAME
 
-# Create .northern directory
+# Create .kyd directory
 mkdir $USERHOME/.kyd
 
 # Install bootstrap file
@@ -249,7 +249,7 @@ if [[ ("$BOOTSTRAP" == "y" || "$BOOTSTRAP" == "Y" || "$BOOTSTRAP" == "") ]]; the
   echo "skipping"
 fi
 
-# Create northern.conf
+# Create kyd.conf
 touch $USERHOME/.kyd/kyd.conf
 cat > $USERHOME/.kyd/kyd.conf << EOL
 ${INSTALLERUSED}
@@ -274,7 +274,7 @@ chown -R $USER:$USER $USERHOME/.kyd
 
 sleep 1
 
-cat > /etc/systemd/system/northern.service << EOL
+cat > /etc/systemd/system/kyd.service << EOL
 [Unit]
 Description=kydd
 After=network.target
@@ -297,7 +297,7 @@ cat << EOL
 
 Now, you need to start your masternode. Please go to your desktop wallet
 Click the Masternodes tab
-Click Start all at the bottom 
+Click Start all at the bottom
 EOL
 
 read -p "Press Enter to continue after you've done that. " -n1 -s
