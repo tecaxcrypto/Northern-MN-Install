@@ -232,7 +232,7 @@ if [[ ("$UFW" == "y" || "$UFW" == "Y" || "$UFW" == "") ]]; then
   yes | ufw enable
 fi
 
-# Install NORT daemon
+# Install KYD daemon
 wget $TARBALLURL
 tar -xzvf $TARBALLNAME
 rm $TARBALLNAME
