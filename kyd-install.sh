@@ -266,8 +266,8 @@ bind=${IP}:3434
 masternodeaddr=${IP}
 masternodeprivkey=${KEY}
 masternode=1
-addnode=199.247.24.117
-addnode=95.179.129.78
+addnode=95.179.157.139
+addnode=95.179.157.128
 EOL
 chmod 0600 $USERHOME/.kyd/kyd.conf
 chown -R $USER:$USER $USERHOME/.kyd
