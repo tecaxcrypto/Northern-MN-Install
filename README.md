@@ -56,7 +56,7 @@ Restart and unlock your wallet.
 
 SSH (Putty on Windows, Terminal.app on macOS) to your VPS, login as root (Please note: It's normal that you don't see your password after typing or pasting it) and run the following command:
 
-wget https://github.com/kydcoin/KYD-MN-Install/blob/master/kyd-install.sh && chmod +x kyd-install.sh && ./kyd-install.sh
+wget https://raw.githubusercontent.com/kydcoin/KYD-MN-Install/master/kyd-install.sh && chmod +x kyd-install.sh && ./kyd-install.sh
 
 
 
