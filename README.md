@@ -92,7 +92,7 @@ Once you see "Masternode setup completed." on screen, you are done.
 ```
 
 
-## For Windows setups, use this config in your masternode.conf or northern.conf (depending on if you are using a VPS or local wallet)
+## For Windows setups, use this config in your masternode.conf or tecax.conf (depending on if you are using a VPS or local wallet)
 
 ```bash
 rpcuser=<RANDOMUSERNAME>
