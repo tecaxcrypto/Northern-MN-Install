@@ -37,39 +37,30 @@ sudo ufw limit ssh/tcp
 sudo ufw logging on
 echo "y" | sudo ufw enable
 sudo ufw status
-sudo ufw allow 6942/tcp
+sudo ufw allow 5252/tcp
   
 cd
-mkdir -p .northern
-echo "staking=1" >> northern.conf
-echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> northern.conf
-echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> northern.conf
-echo "rpcallowip=127.0.0.1" >> northern.conf
-echo "listen=1" >> northern.conf
-echo "server=1" >> northern.conf
-echo "daemon=1" >> northern.conf
-echo "logtimestamps=1" >> northern.conf
-echo "maxconnections=256" >> northern.conf
-echo "addnode=209.250.233.104" >> northern.conf
-echo "addnode=45.77.82.101" >> northern.conf
-echo "addnode=138.68.167.127" >> northern.conf
-echo "addnode=207.246.86.118" >> northern.conf
-echo "addnode=149.56.4.247" >> northern.conf
-echo "addnode=149.56.4.246" >> northern.conf
-echo "addnode=149.56.4.245" >> northern.conf
-echo "addnode=149.56.4.244" >> northern.conf
-echo "addnode=149.56.4.243" >> northern.conf
-echo "addnode=149.56.4.242" >> northern.conf
-echo "addnode=149.56.4.241" >> northern.conf
-echo "port=6942" >> northern.conf
-mv northern.conf .northern
+mkdir -p .tecax
+echo "staking=1" >> tecax.conf
+echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> tecax.conf
+echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> tecax.conf
+echo "rpcallowip=127.0.0.1" >> tecax.conf
+echo "listen=1" >> tecax.conf
+echo "server=1" >> tecax.conf
+echo "daemon=1" >> tecax.conf
+echo "logtimestamps=1" >> tecax.conf
+echo "maxconnections=256" >> tecax.conf
+echo "addnode=104.238.138.11" >> tecax.conf
+echo "addnode=108.61.119.248" >> tecax.conf
+echo "port=5252" >> tecax.conf
+mv tecax.conf .tecax
 
   
 cd
-./northernd -daemon
+./tecaxd -daemon
 sleep 30
-./northern-cli getinfo
+./tecax-cli getinfo
 sleep 5
-./northern-cli getnewaddress
-echo "Use the address above to send your NORT coins to this server"
-echo "If you found this helpful, please donate NORT to NNq96FUcDRj62vX5CdbNeAFjG3MTYeeeHn"
+./tecax-cli getnewaddress
+echo "Use the address above to send your TECAX coins to this server"
+
