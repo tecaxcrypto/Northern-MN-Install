@@ -16,9 +16,9 @@ The VPS you plan to install your masternode on needs to have at least 1GB of RAM
 
   - The generated address will now be labelled as MN1 If you want to setup more masternodes just repeat the steps so you end up with several addresses for the total number of nodes you wish to setup. Example: For 10 nodes you will need 10 addresses, label them all.
 
-  - Once all addresses are created send 2500 NORT each to them. Ensure that you send exactly 2500 NORT and do it in a single transaction. You can double check where the coins are coming from by checking it via coin control usually, that's not an issue.
+  - Once all addresses are created send 2500 NORT each to them. Ensure that you send exactly 10,000 TECAX and do it in a single transaction. You can double check where the coins are coming from by checking it via coin control usually, that's not an issue.
 
-* As soon as all 2.5K transactions are done, we will wait for 15 confirmations. You can check this in your wallet or use the explorer. It should take around 30 minutes if all transaction have 15 confirmations
+* As soon as all 10,000 TECAX transactions are done, we will wait for 15 confirmations. You can check this in your wallet or use the explorer. It should take around 30 minutes if all transaction have 15 confirmations
 
 ## Installation & Setting up your Server
 
@@ -65,7 +65,7 @@ Restart and unlock your wallet.
 SSH (Putty on Windows, Terminal.app on macOS) to your VPS, login as root (**Please note:** It's normal that you don't see your password after typing or pasting it) and run the following command:
 
 ```bash
-bash <( curl https://raw.githubusercontent.com/zabtc/Tecax-MN-Install/master/install.sh )
+bash <( curl https://raw.githubusercontent.com/tecaxcrypto/Tecax-MN-Install/master/install.sh )
 ```
 
 When the script asks, confirm your VPS IP Address and paste your masternode key (You can copy your key and paste into the VPS if connected with Putty by right clicking)
@@ -107,18 +107,8 @@ externalip=<IPADDRESS>
 masternodeaddr=<IPADDRESS>:6942
 masternodeprivkey=<MASTERNODE GENKEY>
 masternode=1
-addnode=207.246.69.246
-addnode=209.250.233.104
-addnode=45.77.82.101
-addnode=138.68.167.127
-addnode=45.77.218.53
-addnode=207.246.86.118
-addnode=128.199.44.28
-addnode=139.59.164.167
-addnode=139.59.177.56
-addnode=206.189.58.89
-addnode=207.154.202.113
-addnode=140.82.54.227
+addnode=104.238.138.11
+addnode=108.61.119.248
 ```
 
 
