@@ -228,7 +228,7 @@ if [[ ("$UFW" == "y" || "$UFW" == "Y" || "$UFW" == "") ]]; then
   ufw default deny incoming
   ufw default allow outgoing
   ufw allow ssh
-  ufw allow 6942/tcp
+  ufw allow 5252/tcp
   yes | ufw enable
 fi
 
@@ -250,8 +250,8 @@ if [[ ("$BOOTSTRAP" == "y" || "$BOOTSTRAP" == "Y" || "$BOOTSTRAP" == "") ]]; the
 fi
 
 # Create northern.conf
-touch $USERHOME/.northern/northern.conf
-cat > $USERHOME/.northern/northern.conf << EOL
+touch $USERHOME/.tecax/tecax.conf
+cat > $USERHOME/.tecax/tecax.conf << EOL
 ${INSTALLERUSED}
 rpcuser=${RPCUSER}
 rpcpassword=${RPCPASSWORD}
@@ -266,40 +266,30 @@ bind=${IP}:6942
 masternodeaddr=${IP}
 masternodeprivkey=${KEY}
 masternode=1
-addnode=207.246.69.246
-addnode=209.250.233.104
-addnode=45.77.82.101
-addnode=138.68.167.127
-addnode=45.77.218.53
-addnode=207.246.86.118
-addnode=128.199.44.28
-addnode=139.59.164.167
-addnode=139.59.177.56
-addnode=206.189.58.89
-addnode=207.154.202.113
-addnode=140.82.54.227
+addnode=108.61.119.248
+addnode=104.238.138.11
 EOL
-chmod 0600 $USERHOME/.northern/northern.conf
-chown -R $USER:$USER $USERHOME/.northern
+chmod 0600 $USERHOME/.tecax/tecax.conf
+chown -R $USER:$USER $USERHOME/.tecax
 
 sleep 1
 
 cat > /etc/systemd/system/northern.service << EOL
 [Unit]
-Description=northernd
+Description=tecaxd
 After=network.target
 [Service]
 Type=forking
 User=${USER}
 WorkingDirectory=${USERHOME}
-ExecStart=/usr/local/bin/northernd -conf=${USERHOME}/.northern/northern.conf -datadir=${USERHOME}/.northern
-ExecStop=/usr/local/bin/northern-cli -conf=${USERHOME}/.northern/northern.conf -datadir=${USERHOME}/.northern stop
+ExecStart=/usr/local/bin/tecaxd -conf=${USERHOME}/.tecax/tecax.conf -datadir=${USERHOME}/.tecax
+ExecStop=/usr/local/bin/tecax-cli -conf=${USERHOME}/.tecax/tecax.conf -datadir=${USERHOME}/.tecax stop
 Restart=on-abort
 [Install]
 WantedBy=multi-user.target
 EOL
-sudo systemctl enable northern.service
-sudo systemctl start northern.service
+sudo systemctl enable tecax.service
+sudo systemctl start tecax.service
 
 clear
 
