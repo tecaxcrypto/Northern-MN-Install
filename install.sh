@@ -82,7 +82,7 @@ set -- "${POSITIONAL[@]}" # restore positional parameters
 
 clear
 
-# Set these to change the version of northern to install
+# Set these to change the version of tecax to install
 TARBALLURL="https://github.com/tecaxcrypto/Tecax/releases/download/v1.0.0/tecax-1.0.0-x86_64-linux-gnu.tar.gz"
 TARBALLNAME="tecax-1.0.0-x86_64-linux-gnu.tar.gz"
 BOOTSTRAPURL=""
@@ -160,13 +160,13 @@ fi
 
 if [[ ("$ADVANCED" == "y" || "$ADVANCED" == "Y") ]]; then
 
-USER=northern
+USER=tecax
 
 adduser $USER --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password > /dev/null
 
 INSTALLERUSED="#Used Advanced Install"
 
-echo "" && echo 'Added user "northern"' && echo ""
+echo "" && echo 'Added user "tecax"' && echo ""
 sleep 1
 
 else
@@ -236,20 +236,20 @@ fi
 wget $TARBALLURL
 tar -xzvf $TARBALLNAME 
 rm $TARBALLNAME
-mv ./northernd /usr/local/bin
-mv ./northern-cli /usr/local/bin
-mv ./northern-tx /usr/local/bin
+mv ./tecaxd /usr/local/bin
+mv ./tecax-cli /usr/local/bin
+mv ./tecax-tx /usr/local/bin
 rm -rf $TARBALLNAME
 
-# Create .northern directory
-mkdir $USERHOME/.northern
+# Create .tecax directory
+mkdir $USERHOME/.tecax
 
 # Install bootstrap file
 if [[ ("$BOOTSTRAP" == "y" || "$BOOTSTRAP" == "Y" || "$BOOTSTRAP" == "") ]]; then
   echo "skipping"
 fi
 
-# Create northern.conf
+# Create tecax.conf
 touch $USERHOME/.tecax/tecax.conf
 cat > $USERHOME/.tecax/tecax.conf << EOL
 ${INSTALLERUSED}
@@ -262,7 +262,7 @@ daemon=1
 logtimestamps=1
 maxconnections=256
 externalip=${IP}
-bind=${IP}:6942
+bind=${IP}:5252
 masternodeaddr=${IP}
 masternodeprivkey=${KEY}
 masternode=1
@@ -274,7 +274,7 @@ chown -R $USER:$USER $USERHOME/.tecax
 
 sleep 1
 
-cat > /etc/systemd/system/northern.service << EOL
+cat > /etc/systemd/system/tecax.service << EOL
 [Unit]
 Description=tecaxd
 After=network.target
