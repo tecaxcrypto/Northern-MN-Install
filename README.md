@@ -1,4 +1,4 @@
-# Northern-Masternode-Guide
+# TECAX-Masternode-Guide
 
 ## System requirements - USE AN UBUNTU LINUX 16.04 VPS for best results
 
@@ -6,9 +6,9 @@ The VPS you plan to install your masternode on needs to have at least 1GB of RAM
 
 ## Funding your Masternode
 
-* First, we will do the initial collateral TX and send exactly 2500 NORT to one of our addresses. To keep things sorted in case we setup more masternodes we will label the addresses we use.
+* First, we will do the initial collateral TX and send exactly 10,000 (ten thousand) TECAX to one of your addresses. To keep things sorted in case we setup more masternodes we will label the addresses we use.
 
-  - Open your NORT wallet and switch to the "Receive" tab.
+  - Open your TECAX wallet and switch to the "Receive" tab.
 
   - Click into the label field and create a label, I will use "MN1"
 
@@ -40,11 +40,11 @@ masternode outputs
 
 Copy both the key and output information to a text file.
 
-Close your wallet and open the Northern Appdata folder. Its location depends on your OS.
+Close your wallet and open the Tecax Appdata folder. Its location depends on your OS.
 
-* **Windows:** Press Windows+R and write %appdata% - there, open the folder Northern.  
-* **macOS:** Press Command+Space to open Spotlight, write ~/Library/Application Support/Northern and press Enter.  
-* **Linux:** Open ~/.Northern/
+* **Windows:** Press Windows+R and write %appdata% - there, open the folder Tecax.  
+* **macOS:** Press Command+Space to open Spotlight, write ~/Library/Application Support/Tecax and press Enter.  
+* **Linux:** Open ~/.tecax/
 
 In your appdata folder, open masternode.conf with a text editor and add a new line in this format to the bottom of the file:
 
@@ -65,14 +65,14 @@ Restart and unlock your wallet.
 SSH (Putty on Windows, Terminal.app on macOS) to your VPS, login as root (**Please note:** It's normal that you don't see your password after typing or pasting it) and run the following command:
 
 ```bash
-bash <( curl https://raw.githubusercontent.com/zabtc/Northern-MN-Install/master/install.sh )
+bash <( curl https://raw.githubusercontent.com/zabtc/Tecax-MN-Install/master/install.sh )
 ```
 
 When the script asks, confirm your VPS IP Address and paste your masternode key (You can copy your key and paste into the VPS if connected with Putty by right clicking)
 
 The installer will then present you with a few options.
 
-**PLEASE NOTE**: Do not choose the advanced installation option unless you have experience with Linux and know what you are doing - if you do and something goes wrong, the Northern team CANNOT help you, and you will have to restart the installation.
+**PLEASE NOTE**: Do not choose the advanced installation option unless you have experience with Linux and know what you are doing - if you do and something goes wrong, the Tecax team CANNOT help you, and you will have to restart the installation.
 
 Follow the instructions on screen.
 
@@ -88,12 +88,8 @@ Once you see "Masternode setup completed." on screen, you are done.
 ### To check your masternode status on your VPS, navigate to /usr/local/bin and then run 
 
 ```bash
-./northern-cli masternode status
+./tecax-cli masternode status
 ```
-
-
-### If you have any issues, please be sure to join our Discord and ask for support:
-### https://discord.gg/9nzt37V
 
 
 ## For Windows setups, use this config in your masternode.conf or northern.conf (depending on if you are using a VPS or local wallet)
